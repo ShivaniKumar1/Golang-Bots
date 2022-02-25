@@ -2,6 +2,7 @@ package slack
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -32,6 +33,7 @@ func SlackCommand() {
 		api,
 		socketmode.OptionDebug(true),
 	)
+	fmt.Println("Slack: vbot is now running.")
 
 	c, cancel := context.WithCancel(context.Background())
 	defer cancel()

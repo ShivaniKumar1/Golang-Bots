@@ -30,15 +30,6 @@ type Products struct {
 	} `json:"products"`
 }
 
-// Reading json; do this before to make sure the site is a valid url.
-// Converting string -> int & asking user input for product ID and size
-func getInfo(s string, userId string) (Products, int64) {
-	list := readURL(s)
-	temp := convert(userId)
-	id := validID(temp)
-	return list, id
-}
-
 // Finding and printing specfic product.
 // Looks through the product and variants struct to find the specific information.
 func FindProduct(s string, userId string, size string) (string, string, string, string, string, int64, bool) {
@@ -96,6 +87,15 @@ func FindSizes(s string, userId string) (string, string, string, string, string,
 	return "", "", "", "", "", flag
 }
 
+// Reading json; do this before to make sure the site is a valid url.
+// Converting string -> int & asking user input for product ID and size
+func getInfo(s string, userId string) (Products, int64) {
+	list := readURL(s)
+	temp := convert(userId)
+	id := validID(temp)
+	return list, id
+}
+
 // To print the different sizes if that's what the user wants.
 func sizeStrings(vmap map[int64]string) string {
 	sizes := ""
@@ -104,15 +104,6 @@ func sizeStrings(vmap map[int64]string) string {
 	}
 	return sizes
 }
-
-// Find the id
-/*func sizeArray(vmap map[int64]string) []string {
-	size := []string{"", ""}
-	for k, v := range vmap {
-		size = append(size, v, strconv.FormatInt(k, 10))
-	}
-	return size
-}*/
 
 // Checks the site to see if it's a shopify site.
 // Reads the json file of the site, gets the body, and parses through it.

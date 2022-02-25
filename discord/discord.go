@@ -41,14 +41,7 @@ func DiscordCommand() {
 		return
 	}
 
-	fmt.Println("vbot is now running.")
-
-	// If you want to only run the discord bot alone. Uncomment the following.
-	/*terminate := make(chan os.Signal, 1)
-	signal.Notify(terminate, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
-	<-terminate
-
-	dg.Close() */
+	fmt.Println("Discord: vbot is now running.")
 }
 
 // Read in user input and spilt the string so we can pass to findProduct
