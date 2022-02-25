@@ -1,20 +1,25 @@
 # syntax=docker/dockerfile:1
 
 FROM golang:1.17
+
+RUN mkdir /goapp
+ADD . /goapp
 WORKDIR /goapp
 
-ENV AUTH_TOKEN="xoxb-3112034882821-3108307889110-UDRwxuwymGbL8KEELqNPmFEy"
-ENV ENV APP_TOKEN="xapp-1-A0342LJBNPJ-3108641337974-3b39554a229df26d11bee652642fe57849067eb73ffcbc41c9fc2eb162d35bf1"
-ENV CHANNEL_ID="C0345JKNX4M"
-ENV CLIENT_ID=“946203145074266132”
-ENV TOKEN="OTQ2MjAzMTQ1MDc0MjY2MTMy.YhbSWQ.ZUCh-BVmqVbPUTIpz8v20bBF_T4"
+ENV AUTH_TOKEN=
+ENV APP_TOKEN=
+ENV CHANNEL_ID=
+ENV CLIENT_ID=
+ENV TOKEN=
+
+RUN export GO111MODULE=on
+RUN cd /goapp && git clone https://github.com/ShivaniKumar1/gobot.git
 
 COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
-
 COPY *.go ./
 
-RUN go build -o /gobot
+RUN go build -o main .
 
-CMD ["/gobot"]
+CMD ["/goapp/main"]
