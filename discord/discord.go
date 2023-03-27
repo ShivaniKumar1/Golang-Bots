@@ -16,7 +16,6 @@ import (
 
 // Turns the connection to discord on.
 func DiscordCommand() {
-	// IMPORTANT: Add your oauth token to the .env file or else this program will throw an error.
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal(err)

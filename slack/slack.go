@@ -18,7 +18,6 @@ import (
 
 // This function "turns on" socketmode client, it will keep it open until we terminate the program.
 func SlackCommand() {
-	// IMPORTANT: Add your tokens and the channel id to the .env file or else this program will throw an error.
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal(err)

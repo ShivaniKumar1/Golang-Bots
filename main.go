@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	// Running Discord and Slack bots
 	d.DiscordCommand()
 	s.SlackCommand()
 }
