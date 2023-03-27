@@ -71,7 +71,7 @@ func FindSizes(s string, userId string) (string, string, string, string, string,
 			for _, v := range p.Variants {
 				price = v.Price
 				if v.Available == true {
-					vMap[v.Id] = v.Title
+					vMap[p.Id] = v.Title
 				} else {
 					continue
 				}
